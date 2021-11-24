@@ -15,7 +15,7 @@ const serve = {
     host: '192.168.2.189', // 服务器的IP地址
     port: '22', // 服务器端口， 一般为 22
     username: 'root', // 用户名
-    password: 'winter520', // 密码
+    password: '', // 密码
     // privateKey: require('fs').readFileSync('D:\\key.ppk'),
     passphrase: 'private_key_password',
     path: '/www/wwwroot/gf_intelligence_power/src/auth/public' // 项目部署的服务器目标位置
@@ -24,7 +24,7 @@ const serve = {
     host: '123.56.97.11', // 服务器的IP地址
     port: '22', // 服务器端口， 一般为 22
     username: 'www', // 用户名
-    password: 'w2g78S23#j^', // 密码
+    password: '', // 密码
     // privateKey: require('fs').readFileSync('D:\\key.ppk'),
     passphrase: 'private_key_password',
     path: '/www/wwwroot/online/gongfuke_hr/public' // 项目部署的服务器目标位置

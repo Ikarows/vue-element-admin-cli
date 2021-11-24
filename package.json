@@ -1,7 +1,7 @@
 {
-  "name": "breaker-renter",
+  "name": "renter",
   "version": "4.3.1",
-  "description": "安全用电管家管理端",
+  "description": "",
   "author": "Ikarows",
   "scripts": {
     "serve": "vue-cli-service serve",
