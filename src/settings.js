@@ -1,5 +1,5 @@
 module.exports = {
-  title: '安全用电管家',
+  title: 'Vue-Element-Admin',
 
   /**
    * @type {boolean} true | false

@@ -38,9 +38,6 @@ Vue.use(Router)
 /* Layout */
 import Layout from '@/layout'
 
-/* Router Modules */
-import agnetRouter from './modules/agent'
-
 /**
  * constantRoutes
  * a base page that does not have permission requirements
@@ -108,6 +105,16 @@ export const constantRoutes = [
   }
 ]
 
+const modulesFiles = require.context('./modules', true, /\.js$/)
+let modules = modulesFiles.keys().reduce((modules, modulePath) => {
+  // set './app.js' => 'app'
+  const moduleName = modulePath.replace(/^\.\/(.*)\.\w+$/, '$1')
+  const value = modulesFiles(modulePath)
+  modules[moduleName] = value.default
+  return modules
+}, {})
+modules = Object.keys(modules).map(key => (modules[key]))
+
 /**
  * asyncRoutes
  * the routes that need to be dynamically loaded based on user roles
@@ -115,32 +122,7 @@ export const constantRoutes = [
 export const asyncRoutes = [
 
   /** when your routing map is too long, you can split it into small modules **/
-  agnetRouter,
-  {
-    path: '/error',
-    component: Layout,
-    redirect: 'noRedirect',
-    name: 'ErrorPages',
-    meta: {
-      title: 'errorPages',
-      icon: '404'
-    },
-    children: [
-      {
-        path: '401',
-        component: () => import('@/views/error-page/401'),
-        name: 'Page401',
-        meta: { title: 'page401', noCache: true }
-      },
-      {
-        path: '404',
-        component: () => import('@/views/error-page/404'),
-        name: 'Page404',
-        meta: { title: 'page404', noCache: true }
-      }
-    ]
-  },
-
+  ...modules,
   { path: '*', redirect: '/404', hidden: true }
 ]
 
